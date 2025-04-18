@@ -1,9 +1,11 @@
 import { FoodOrderModel } from "../model/foodOrder.js";
 export const createFoodOrder = async (req, res) => {
-  const { quantity } = req.body;
+  const { user, totalPrice, foodOrderItems } = req.body;
   try {
     const foodOrder = await FoodOrderModel.create({
-        quantity:quantity
+      user: user,
+      totalPrice: totalPrice,
+      foodOrderItems: foodOrderItems,
     });
     return res
       .status(200)
@@ -23,14 +25,14 @@ export const createFoodOrder = async (req, res) => {
       .end();
   }
 };
-export const getFoodOrder = async (_, res) => {
+export const getFoodOrder = async (req, res) => {
   try {
     const foodOrder = await FoodOrderModel.find();
     return res
       .status(200)
       .send({
         success: true,
-        foodOrder:foodOrder,
+        foodOrder: foodOrder,
       })
       .end();
   } catch (error) {

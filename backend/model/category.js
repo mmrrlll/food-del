@@ -1,8 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
-const foodCategory = new mongoose.Schema({
-  categoryName: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
-});
-export const CategoryModel = mongoose.model('category',foodCategory)
+const foodCategory = new mongoose.Schema(
+  {
+    id: { type: Schema.Types.ObjectId, ref: "food" },
+    categoryName: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+export const CategoryModel = mongoose.model("category", foodCategory);

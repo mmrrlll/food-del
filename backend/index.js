@@ -3,7 +3,7 @@ import { connectMongoDB } from "./ConnectDB.js";
 import { userRouter } from "./routes/user.js";
 import { categoryRouter } from "./routes/category.js";
 import { foodRouter } from "./routes/food.js";
-import { foodOrderItemRouter } from "./routes/foodOrderItem.js";
+import { foodOrderRouter } from "./routes/foodOrder.js";
 import cors from "cors";
 
 const port = 8000;
@@ -14,7 +14,6 @@ app.use(json());
 app.use("/user", userRouter);
 app.use("/category",categoryRouter);
 app.use("/food", foodRouter);
-app.use("/foodOrderItem", foodOrderItemRouter);
 app.use("/foodOrder", foodOrderRouter);
 app.get("/", (req, res) => {
   res.send("hello world");
